@@ -18,8 +18,11 @@ List<StudentModel> students = new List<StudentModel>
    
 };
 
+//Get All Model Data
+app.MapGet("/" ,() => students);
 
 
-app.MapGet("/", () => "Hello World!");
+
+app.MapGet("Hello", () => "Hello World!");
 
 app.Run();
