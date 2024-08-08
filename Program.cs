@@ -48,6 +48,12 @@ app.MapPut("data/{id}",(UpdateStudent_model update,int id) => {
     };
 });
 
+//delete data from model
+app.MapDelete("data/{id}",(int id) =>
+{
+    students.RemoveAll(students => students.Id == id);
+});
+
 app.MapGet("Hello", () => "Hello World!");
 
 app.Run();
