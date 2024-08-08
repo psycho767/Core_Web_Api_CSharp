@@ -35,6 +35,19 @@ app.MapPost("Data",(CreateStudent_Model update_Stu) => {
 
 });
 
+//update data in model
+app.MapPut("data/{id}",(UpdateStudent_model update,int id) => {
+    var index = students.FindIndex(students => students.Id == id);
+    students[index] = new StudentModel
+    {
+        Id = id,
+        Name = update.Name,
+        Age = update.Age,
+        Email = update.Email,
+        Address = update.Address
+    };
+});
+
 app.MapGet("Hello", () => "Hello World!");
 
 app.Run();
