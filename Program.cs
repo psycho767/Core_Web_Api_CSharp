@@ -21,6 +21,9 @@ List<StudentModel> students = new List<StudentModel>
 //Get All Model Data
 app.MapGet("/" ,() => students);
 
+//Get Data By Id
+app.MapGet("Data/{id}", (int id) => students.FindAll(students => students.Id == id));
+
 
 
 app.MapGet("Hello", () => "Hello World!");
