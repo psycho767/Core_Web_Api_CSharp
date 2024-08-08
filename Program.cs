@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-
+var group = app.MapGroup("Data");
 
 List<StudentModel> students = new List<StudentModel>
 {
@@ -16,13 +16,13 @@ List<StudentModel> students = new List<StudentModel>
 };
 
 //Get All Model Data
-app.MapGet("/" ,() => students);
+group.MapGet("/" ,() => students);
 
 //Get Data By Id
-app.MapGet("Data/{id}", (int id) => students.FindAll(students => students.Id == id));
+group.MapGet("/{id}", (int id) => students.FindAll(students => students.Id == id));
 
 //create new data
-app.MapPost("Data",(CreateStudent_Model update_Stu) => {
+group.MapPost("/",(CreateStudent_Model update_Stu) => {
     StudentModel stud = new StudentModel
     { 
         Id = students.Count+1,
@@ -36,7 +36,7 @@ app.MapPost("Data",(CreateStudent_Model update_Stu) => {
 });
 
 //update data in model
-app.MapPut("data/{id}",(UpdateStudent_model update,int id) => {
+group.MapPut("/{id}",(UpdateStudent_model update,int id) => {
     var index = students.FindIndex(students => students.Id == id);
     students[index] = new StudentModel
     {
@@ -49,7 +49,7 @@ app.MapPut("data/{id}",(UpdateStudent_model update,int id) => {
 });
 
 //delete data from model
-app.MapDelete("data/{id}",(int id) =>
+group.MapDelete("/{id}",(int id) =>
 {
     students.RemoveAll(students => students.Id == id);
 });
