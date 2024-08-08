@@ -1,13 +1,10 @@
-using API_WebApp;
+using API_WebApp.Student_Model;
 using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-//List<StudentModel> student = new List<StudentModel>
-//{
-//    new StudentModel{id:1,Name:"Hitesh",Age:20,email:"hitesh@gmail.com",address:"noida" }
-//}
+
 
 List<StudentModel> students = new List<StudentModel>
 {
@@ -24,7 +21,19 @@ app.MapGet("/" ,() => students);
 //Get Data By Id
 app.MapGet("Data/{id}", (int id) => students.FindAll(students => students.Id == id));
 
+//create new data
+app.MapPost("Data",(CreateStudent_Model update_Stu) => {
+    StudentModel stud = new StudentModel
+    { 
+        Id = students.Count+1,
+        Name = update_Stu.Name,
+        Age = update_Stu.Age,
+        Email = update_Stu.Email,
+        Address = update_Stu.Address
+    };
+    students.Add(stud);
 
+});
 
 app.MapGet("Hello", () => "Hello World!");
 

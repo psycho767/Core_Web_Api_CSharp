@@ -1,4 +1,4 @@
-﻿namespace API_WebApp
+﻿namespace API_WebApp.Student_Model
 {
     public class StudentModel
     {
