@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+q/7S33k+V0=",
+  "dgSpecHash": "knMKdkOPVz8=",
   "success": true,
   "projectFilePath": "D:\\Dot Net Core\\Dot Net Core Project\\API_Testing\\API_WebApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\hites\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
